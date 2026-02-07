@@ -36,7 +36,7 @@ const AboutPage: React.FC = () => {
                         </Button>
                         <Button
                             as="a"
-                            href="https://github.com"
+                            href="https://github.com/O-Aditya/"
                             target="_blank"
                             variant="bordered"
                             className="font-mono border-border"
@@ -58,8 +58,18 @@ const AboutPage: React.FC = () => {
                 </div>
 
                 {/* Terminal/Profile Card */}
-                <div className="w-full md:w-1/3">
-                    <div className="relative rounded-xl overflow-hidden bg-[#1e1f22] border border-[#4e5155] shadow-2xl">
+                <div className="w-full md:w-1/3 flex flex-col items-center gap-6">
+                    {/* Profile Photo */}
+                    <div className="relative group">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-accent to-purple-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                        <img
+                            src="https://github.com/O-Aditya.png"
+                            alt="Aditya Maurya"
+                            className="relative rounded-full w-48 h-48 object-cover border-4 border-background shadow-2xl"
+                        />
+                    </div>
+
+                    <div className="relative w-full rounded-xl overflow-hidden bg-[#1e1f22] border border-[#4e5155] shadow-2xl">
                         <div className="flex items-center gap-1.5 px-4 py-3 bg-[#2b2d30] border-b border-[#4e5155]">
                             <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
                             <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>

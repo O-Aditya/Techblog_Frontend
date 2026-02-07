@@ -1,4 +1,4 @@
-import React from 'react';
+import { Github } from 'lucide-react';
 
 const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear();
@@ -11,6 +11,16 @@ const Footer: React.FC = () => {
                         © {currentYear}  Blog. All rights reserved.
                     </p>
                     <div className="flex items-center gap-4 text-sm text-muted">
+                        <a
+                            href="https://github.com/O-Aditya/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-accent transition-colors no-underline flex items-center gap-1"
+                        >
+                            <Github size={16} />
+                            <span>GitHub</span>
+                        </a>
+                        <span>|</span>
                         <a
                             href="#"
                             className="hover:text-accent transition-colors no-underline"

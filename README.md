@@ -42,7 +42,7 @@ A modern, responsive personal blog frontend built with **React**, **Vite**, and 
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/Techblog_Frontend.git
+git clone https://github.com/O-Aditya/Techblog_Frontend.git
 cd Techblog_Frontend
 ```
 
