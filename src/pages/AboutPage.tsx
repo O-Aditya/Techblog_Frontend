@@ -7,7 +7,7 @@ const AboutPage: React.FC = () => {
         <div className="max-w-4xl mx-auto space-y-12 animate-in fade-in duration-700">
 
             {/* Hero Section with Terminal Effect */}
-            <section className="space-y-6 text-center md:text-left flex flex-col md:flex-row gap-8 items-center">
+            <section className="space-y-6 text-center md:text-left flex flex-col md:flex-row gap-8 items-start">
                 <div className="flex-1 space-y-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-mono border border-accent/20">
                         <span className="relative flex h-2 w-2">
@@ -61,11 +61,10 @@ const AboutPage: React.FC = () => {
                 <div className="w-full md:w-1/3 flex flex-col items-center gap-6">
                     {/* Profile Photo */}
                     <div className="relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-accent to-purple-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
                         <img
-                            src="https://github.com/O-Aditya.png"
+                            src="/profile.png"
                             alt="Aditya Maurya"
-                            className="relative rounded-full w-48 h-48 object-cover border-4 border-background shadow-2xl"
+                            className="relative rounded-full w-48 h-48 object-cover border-4 border-background shadow-2xl transition-transform duration-300 group-hover:scale-105"
                         />
                     </div>
 
