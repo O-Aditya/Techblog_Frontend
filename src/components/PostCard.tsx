@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-    Calendar, Clock, Tag, User
+    Calendar, Clock, Tag, User, FolderOpen
 
 } from 'lucide-react';
 import { Post } from '../services/apiService';
@@ -40,6 +40,10 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 <span className="flex items-center gap-1.5">
                     <Calendar className="w-4 h-4" />
                     {formatDate(post.createdAt)}
+                </span>
+                <span className="flex items-center gap-1.5">
+                    <FolderOpen className="w-4 h-4" />
+                    {post.category?.name}
                 </span>
                 {post.readingTime && (
                     <span className="flex items-center gap-1.5">

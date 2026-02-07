@@ -9,7 +9,8 @@ import {
   Trash,
   ArrowLeft,
   Share,
-  User as UserIcon
+  User as UserIcon,
+  FolderOpen
 } from 'lucide-react';
 import { apiService, Post } from '../services/apiService';
 
@@ -138,6 +139,10 @@ const PostPage: React.FC<PostPageProps> = ({ isAuthenticated }) => {
           <span className="flex items-center gap-1.5">
             <Calendar className="w-4 h-4" />
             {formatDate(post.createdAt)}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <FolderOpen className="w-4 h-4" />
+            {post.category?.name}
           </span>
           {post.readingTime && (
             <span className="flex items-center gap-1.5">

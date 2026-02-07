@@ -8,8 +8,9 @@ const AboutPage: React.FC = () => {
 
             {/* Hero Section with Terminal Effect */}
             <section className="space-y-6 text-center md:text-left flex flex-col md:flex-row gap-8 items-start">
-                <div className="flex-1 space-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-mono border border-accent/20">
+                {/* Text Content */}
+                <div className="flex-1 space-y-6 pt-4 text-center md:text-left">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-mono border border-accent/20 mx-auto md:mx-0">
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
@@ -18,18 +19,23 @@ const AboutPage: React.FC = () => {
                     </div>
 
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-                        Hello, I'm <span className="text-accent">Aditya Maurya</span>
+                        Hello, I'm <br />
+                        <span className="text-accent">Aditya Maurya</span>
                     </h1>
-                    <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
+
+                    <p className="text-xl text-muted-foreground leading-relaxed">
                         Full Stack Developer & Tech Enthusiast building scalable systems and crafting digital experiences.
+                        <br /><br />
+                        I specialize in building high-performance applications using modern technologies.
+                        Always learning, always shipping.
                     </p>
 
-                    <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
+                    <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-4">
                         <Button
                             as="a"
                             href="mailto:contact@aditya.sh"
                             variant="flat"
-                            className="font-mono bg-foreground text-background"
+                            className="font-mono bg-foreground text-background font-semibold"
                             startContent={<Mail size={18} />}
                         >
                             Contact Me
@@ -39,7 +45,7 @@ const AboutPage: React.FC = () => {
                             href="https://github.com/O-Aditya/"
                             target="_blank"
                             variant="bordered"
-                            className="font-mono border-border"
+                            className="font-mono border-border hover:border-accent hover:text-accent"
                             startContent={<Github size={18} />}
                         >
                             GitHub
@@ -49,7 +55,7 @@ const AboutPage: React.FC = () => {
                             href="https://linkedin.com"
                             target="_blank"
                             variant="bordered"
-                            className="font-mono border-border"
+                            className="font-mono border-border hover:border-blue-500 hover:text-blue-500"
                             startContent={<Linkedin size={18} />}
                         >
                             LinkedIn
@@ -57,42 +63,14 @@ const AboutPage: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Terminal/Profile Card */}
-                <div className="w-full md:w-1/3 flex flex-col items-center gap-6">
-                    {/* Profile Photo */}
+                {/* Profile Photo - Moved to Right */}
+                <div className="w-full md:w-1/3 flex flex-col items-center justify-center animate-in slide-in-from-right duration-700">
                     <div className="relative group">
                         <img
                             src="/profile.png"
                             alt="Aditya Maurya"
-                            className="relative rounded-full w-48 h-48 object-cover border-4 border-background shadow-2xl transition-transform duration-300 group-hover:scale-105"
+                            className="relative rounded-full w-64 h-64 object-cover border-4 border-background shadow-2xl transition-transform duration-300 group-hover:scale-105"
                         />
-                    </div>
-
-                    <div className="relative w-full rounded-xl overflow-hidden bg-[#1e1f22] border border-[#4e5155] shadow-2xl">
-                        <div className="flex items-center gap-1.5 px-4 py-3 bg-[#2b2d30] border-b border-[#4e5155]">
-                            <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-                            <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-                            <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-                            <div className="text-xs text-center flex-1 text-gray-400 font-mono">aditya@dev:~</div>
-                        </div>
-                        <div className="p-6 font-mono text-sm space-y-4">
-                            <div className="flex gap-2">
-                                <span className="text-accent">➜</span>
-                                <span className="text-cyan-400">~</span>
-                                <span className="text-gray-300">whoami</span>
-                            </div>
-                            <div className="text-gray-400 pl-4 space-y-1">
-                                <p>name: "Aditya Maurya"</p>
-                                <p>role: "Full Stack Engineer"</p>
-                                <p>stack: ["Java", "Spring Boot", "React", "TypeScript"]</p>
-                                <p>location: "India"</p>
-                            </div>
-                            <div className="flex gap-2">
-                                <span className="text-accent">➜</span>
-                                <span className="text-cyan-400">~</span>
-                                <span className="animate-pulse">_</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
