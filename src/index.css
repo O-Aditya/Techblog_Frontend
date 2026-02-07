@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  :root,
+  html[data-theme="light"] {
+    --background: #fdfdfd;
+    --foreground: #282728;
+    --accent: #006cac;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --muted-foreground: #6b7280;
+    /* Gray 500 */
+  }
+
+  html[data-theme="dark"] {
+    --background: #212737;
+    --foreground: #eaedf3;
+    --accent: #ff6b01;
+    --muted: #343f60;
+    --border: #3d465f;
+    --muted-foreground: #9ca3af;
+    /* Gray 400 - Higher contrast */
+  }
+
+  * {
+    @apply border-border;
+    outline-color: var(--accent);
+    outline-width: 2px;
+    scrollbar-width: auto;
+    scrollbar-color: #d1d5db transparent;
+  }
+
+  html {
+    @apply overflow-y-scroll scroll-smooth;
+  }
+
+  /* Force JetBrains Mono globally */
+  html,
+  body {
+    font-family: 'JetBrains Mono', monospace !important;
+  }
+
+  body {
+    @apply flex min-h-screen flex-col bg-background text-foreground;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--background);
+  }
+
+  a,
+  button {
+    outline-offset: 1px;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px dashed var(--accent);
+    text-decoration: none;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  .max-w-app {
+    @apply max-w-3xl;
+  }
+
+  .app-layout {
+    @apply mx-auto w-full max-w-app px-4;
+  }
+
+  .active-nav {
+    @apply underline decoration-wavy decoration-2 underline-offset-8;
+  }
+
+  .wrap-break-word {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+}
+
+/* Typography Prose Styles */
+@layer components {
+  .app-prose {
+    @apply prose max-w-none;
+  }
+
+  .app-prose h1,
+  .app-prose h2,
+  .app-prose h3,
+  .app-prose h4,
+  .app-prose th {
+    @apply mb-3 text-foreground;
+  }
+
+  .app-prose h3 {
+    @apply italic;
+  }
+
+  .app-prose p,
+  .app-prose strong,
+  .app-prose ol,
+  .app-prose ul,
+  .app-prose figcaption,
+  .app-prose table,
+  .app-prose code {
+    @apply text-foreground;
+  }
+
+  .app-prose a {
+    @apply wrap-break-word text-foreground underline-offset-4 hover:text-accent;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+  }
+
+  .app-prose a:focus-visible {
+    text-decoration: none;
+  }
+
+  .app-prose ul {
+    @apply overflow-x-clip;
+  }
+
+  .app-prose li {
+    @apply marker:text-accent;
+  }
+
+  .app-prose hr {
+    @apply border-border;
+  }
+
+  .app-prose img {
+    @apply mx-auto border border-border;
+  }
+
+  .app-prose figcaption {
+    @apply opacity-75;
+  }
+
+  .app-prose table th,
+  .app-prose table td {
+    @apply border border-border p-2;
+  }
+
+  .app-prose table th {
+    @apply py-1.5;
+  }
+
+  .app-prose blockquote {
+    @apply wrap-break-word opacity-80;
+    border-left: 4px solid var(--accent);
+    border-left-color: rgba(var(--accent), 0.8);
+  }
+
+  /* 
+     CODE BLOCK STYLING - UNIVERSAL FORCE
+     This section forces the dark JetBrains UI on all code blocks 
+     regardless of light/dark mode settings.
+  */
+
+  .ProseMirror pre,
+  .app-prose pre {
+    background-color: #1e1f22 !important;
+    /* JetBrains Dark BG */
+    color: #bcbec4 !important;
+    /* Light Text */
+    font-family: 'JetBrains Mono', monospace !important;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    border: 1px solid #4e5155 !important;
+    line-height: 1.6;
+  }
+
+  /* Kill double-backgrounds on nested code tags */
+  .ProseMirror pre code,
+  .app-prose pre code {
+    background-color: transparent !important;
+    color: inherit !important;
+    padding: 0 !important;
+    border: none !important;
+    font-size: 0.9em;
+    font-family: inherit !important;
+    font-weight: normal !important;
+    box-shadow: none !important;
+  }
+
+  /* INLINE Code Styling (text outside of pre blocks) */
+  .app-prose :not(pre)>code,
+  .ProseMirror :not(pre)>code {
+    @apply rounded px-1.5 py-0.5 text-sm;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-weight: 500;
+    /* Default (Light Mode) Inline Style */
+    background-color: rgba(140, 148, 166, 0.15) !important;
+    color: var(--accent) !important;
+  }
+
+  /* Dark Mode Inline Override */
+  html[data-theme="dark"] .app-prose :not(pre)>code,
+  html[data-theme="dark"] .ProseMirror :not(pre)>code {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: var(--foreground) !important;
+  }
+
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 1rem;
+}

@@ -1,0 +1,13 @@
+src/components/PostForm.tsx(139,45): error TS2322: Type 'number' is not assignable to type 'Level'.
+src/components/PostList.tsx(2,10): error TS6133: 'Link' is declared but its value is never read.
+src/components/PostList.tsx(2,29): error TS6133: 'useNavigation' is declared but its value is never read.
+src/components/PostList.tsx(3,56): error TS6133: 'Pagination' is declared but its value is never read.
+src/components/PostList.tsx(3,68): error TS6133: 'Select' is declared but its value is never read.
+src/components/PostList.tsx(3,76): error TS6133: 'SelectItem' is declared but its value is never read.
+src/components/PostList.tsx(22,3): error TS6133: 'page' is declared but its value is never read.
+src/components/PostList.tsx(23,3): error TS6133: 'sortBy' is declared but its value is never read.
+src/components/PostList.tsx(24,3): error TS6133: 'onPageChange' is declared but its value is never read.
+src/components/PostList.tsx(25,3): error TS6133: 'onSortChange' is declared but its value is never read.
+src/components/PostList.tsx(30,9): error TS6133: 'sortOptions' is declared but its value is never read.
+src/components/PostList.tsx(45,9): error TS6133: 'createSanitizedHTML' is declared but its value is never read.
+src/pages/TagsPage.tsx(5,19): error TS6133: 'Trash2' is declared but its value is never read.
