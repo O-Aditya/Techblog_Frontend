@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { marked } from 'marked';
 import {
   Button,
   Input,
@@ -12,7 +13,14 @@ import {
   Tooltip,
   Popover,
   PopoverTrigger,
-  PopoverContent
+  PopoverContent,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+  Textarea
 } from '@nextui-org/react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -35,7 +43,8 @@ import {
   FolderOpen,
   Hash,
   Globe,
-  FileText
+  FileText,
+  FileCode
 } from 'lucide-react';
 import { Post, Category, Tag, PostStatus } from '../services/apiService';
 
@@ -139,8 +148,56 @@ const PostForm: React.FC<PostFormProps> = ({
     editor?.chain().focus().toggleHeading({ level: level as 1 | 2 | 3 }).run();
   };
 
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [markdownInput, setMarkdownInput] = useState('');
+
+  const handleMarkdownImport = async () => {
+    if (!markdownInput.trim()) return;
+    try {
+      const html = await marked.parse(markdownInput);
+      editor?.commands.setContent(html);
+      onOpenChange(); // Close modal
+      setMarkdownInput('');
+    } catch (e) {
+      console.error("Markdown parsing error:", e);
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className="max-w-5xl mx-auto animate-in fade-in duration-500">
+
+      {/* Markdown Import Modal */}
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="2xl">
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Import Markdown</ModalHeader>
+              <ModalBody>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Paste your raw Markdown content here. It will be converted to rich text.
+                  <br />
+                  <span className="text-xs text-warning">Warning: This will replace current editor content.</span>
+                </p>
+                <Textarea
+                  placeholder="# My Awesome Post\n\nWrite something..."
+                  minRows={10}
+                  value={markdownInput}
+                  onChange={(e) => setMarkdownInput(e.target.value)}
+                  className="font-mono text-sm"
+                />
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Cancel
+                </Button>
+                <Button color="primary" onPress={handleMarkdownImport} startContent={<FileCode size={16} />}>
+                  Import Content
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
 
       {/* Top Action Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 border-b border-border/40 pb-4 sticky top-0 bg-background/95 backdrop-blur-sm z-50 pt-4">
@@ -324,6 +381,14 @@ const PostForm: React.FC<PostFormProps> = ({
                 className={`font-mono text-xs ${editor?.isActive('codeBlock') ? 'bg-accent text-white' : ''}`}
               >
                 <Terminal size={18} />
+              </Button>
+            </Tooltip>
+
+            <div className="w-px h-5 bg-border mx-1" />
+
+            <Tooltip content="Import Markdown">
+              <Button size="sm" isIconOnly variant="light" onClick={onOpen} className="text-accent">
+                <FileCode size={18} />
               </Button>
             </Tooltip>
 
